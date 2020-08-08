@@ -4,6 +4,7 @@
     "ISO_FILE": null,
     "ISO_CHECKSUM": null,
     "NAME": "windows2019-{{ env `BUILD_DATE` }}",
+    "BUILD_DATE": "{{ env `BUILD_DATE` }}",
     "OUTPUT_ROOT": "./output",
     "HEADLESS": "true"
   },
