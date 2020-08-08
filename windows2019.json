@@ -38,7 +38,7 @@
       "ethernet0.virtualDev": "vmxnet3"
     },
 
-    "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+    "shutdown_command": "C:\\Windows\\System32\\Sysprep\\Sysprep.exe /generalize /oobe /shutdown",
     "shutdown_timeout": "4h",
     "floppy_files": [
       "scripts/2019-standard/autounattend.xml",
@@ -73,7 +73,7 @@
         {
           "type": "shell-local",
           "inline": [
-            "ovftool --diskMode=thin --name=\"windows2019-{{ user `BUILD_DATE`}}\" --annotation=\"{{ user `BUILD_DATE`}}\" \"{{ user `OUTPUT_ROOT` }}/{{ user `NAME` }}/{{ user `NAME` }}.vmx\" \"output/windows2019-{{ user `BUILD_DATE`}}.ova\"",
+            "ovftool --diskMode=thin --name=\"windows2019-{{ user `BUILD_DATE`}}\" --annotation=\"{{ user `BUILD_DATE`}}\" \"{{ user `OUTPUT_ROOT` }}/{{ user `NAME` }}/{{ user `NAME` }}.vmx\" \"{{ user `OUTPUT_ROOT` }}/windows2019-{{ user `BUILD_DATE`}}.ova\"",
             "rm -rf \"{{ user `OUTPUT_ROOT` }}/{{ user `NAME` }}/\""
           ]
         }
