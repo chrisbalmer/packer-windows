@@ -95,14 +95,20 @@
                     <RequiresUserInput>true</RequiresUserInput>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c a:\microsoft-updates.bat</CommandLine>
+                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\cloudbase-init.ps1</CommandLine>
+                    <Description>Install Cloudbase-Init</Description>
                     <Order>10</Order>
+                    <RequiresUserInput>true</RequiresUserInput>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <CommandLine>cmd.exe /c a:\microsoft-updates.bat</CommandLine>
+                    <Order>20</Order>
                     <Description>Enable Microsoft Updates</Description>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\win-updates.ps1</CommandLine>
                     <Description>Install Windows Updates</Description>
-                    <Order>20</Order>
+                    <Order>30</Order>
                     <RequiresUserInput>true</RequiresUserInput>
                 </SynchronousCommand>
             </FirstLogonCommands>

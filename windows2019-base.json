@@ -43,7 +43,10 @@
       "scripts/2019-standard/autounattend.xml",
       "scripts/microsoft-updates.bat",
       "scripts/win-updates.ps1",
-      "scripts/software/ansible.ps1"
+      "scripts/software/ansible.ps1",
+      "scripts/software/cloudbase-init/cloudbase-init.conf",
+      "scripts/software/cloudbase-init/cloudbase-init-unattend.conf",
+      "scripts/software/cloudbase-init/cloudbase-init.ps1"
      ]
   }],
   "provisioners": [
@@ -63,5 +66,16 @@
       "type": "powershell",
       "script": "scripts/cleanup.ps1"
     }
+  ],
+  "post-processors": [
+      [
+        {
+          "type": "shell-local",
+          "inline": [
+            "ovftool --diskMode=thin --name=\"windows2019-{{ user `BUILD_DATE`}}\" --annotation=\"{{ user `BUILD_DATE`}}\" \"{{ user `OUTPUT_ROOT` }}/{{ user `NAME` }}/{{ user `NAME` }}.vmx\" \"output/windows2019-{{ user `BUILD_DATE`}}.ova\"",
+            "rm -rf \"{{ user `OUTPUT_ROOT` }}/{{ user `NAME` }}/\""
+          ]
+        }
+      ]
   ]
 }
