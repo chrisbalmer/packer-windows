@@ -1,0 +1,1 @@
+Enable-NetFirewallRule -DisplayGroup "File and Printer Sharing"

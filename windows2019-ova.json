@@ -1,0 +1,51 @@
+{
+  "variables": {
+    "NAME": "windows2019-{{ env `BUILD_DATE` }}-ova",
+    "OUTPUT_ROOT": "./output",
+    "HEADLESS": "true",
+    "BUILD_DATE": "{{ env `BUILD_DATE` }}",
+    "SOURCE_PATH": "{{ user `OUTPUT_ROOT` }}/windows2019-{{ env `BUILD_DATE` }}/windows2019-{{ env `BUILD_DATE` }}.vmx"
+  },
+  "builders": [{
+    "name": "{{ user `NAME` }}",
+    "vm_name": "{{ user `NAME` }}",
+    "type": "vmware-vmx",
+    "output_directory": "{{ user `OUTPUT_ROOT` }}/{{ user `NAME` }}/",
+    
+    "source_path": "{{ user `SOURCE_PATH` }}",
+
+    "headless": "{{ user `HEADLESS`}}",
+
+    "communicator":"winrm",
+    "winrm_username": "administrator",
+    "winrm_password": "ansible",
+    "winrm_timeout": "12h",
+    "winrm_use_ntlm": true,
+    "winrm_use_ssl": true,
+    "winrm_insecure": true,
+
+    "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+    "shutdown_timeout": "4h",
+    "floppy_files": [
+      "scripts/software/cloudbase-init/cloudbase-init.conf",
+      "scripts/software/cloudbase-init/cloudbase-init-unattend.conf"
+     ]
+  }],
+  "provisioners": [
+    {
+      "type": "powershell",
+      "script": "scripts/software/cloudbase-init/cloudbase-init.ps1"
+    }
+  ],
+  "post-processors": [
+      [
+        {
+          "type": "shell-local",
+          "inline": [
+            "ovftool --diskMode=thin --name=\"windows2019-{{ user `BUILD_DATE`}}\" --annotation=\"{{ user `BUILD_DATE`}}\" \"{{ user `OUTPUT_ROOT` }}/{{ user `NAME` }}/{{ user `NAME` }}.vmx\" \"output/windows2019-{{ user `BUILD_DATE`}}.ova\"",
+            "rm -rf \"{{ user `OUTPUT_ROOT` }}/{{ user `NAME` }}/\""
+          ]
+        }
+      ]
+  ]
+}
