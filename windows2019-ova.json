@@ -52,5 +52,17 @@
       "type": "powershell",
       "script": "scripts/sysprep.ps1"
     }
+  ],
+  "post-processors": [
+      [
+        {
+          "type": "shell-local",
+          "inline": [
+            "ovftool --diskMode=thin --name=\"windows2019-{{ user `BUILD_DATE`}}\" --annotation=\"{{ user `BUILD_DATE`}}\" \"{{ user `OUTPUT_ROOT` }}/{{ user `NAME` }}/{{ user `NAME` }}.vmx\" \"output/windows2019-{{ user `BUILD_DATE`}}.ova\"",
+            "rm -rf \"{{ user `OUTPUT_ROOT` }}/{{ user `NAME` }}/\""
+          ]
+        }
+      ]
   ]
+
 }
