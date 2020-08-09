@@ -39,7 +39,7 @@
     "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
     "shutdown_timeout": "4h",
     "floppy_files": [
-      "scripts/2019-standard/autounattend.xml",
+      "scripts/{{ user `VERSION` }}-standard/autounattend.xml",
       "scripts/microsoft-updates.bat",
       "scripts/win-updates.ps1",
       "scripts/software/ansible.ps1"
