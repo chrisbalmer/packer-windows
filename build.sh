@@ -5,5 +5,5 @@ export PACKER_LOG_PATH=/tmp/windows10-$BUILD_DATE.log
 
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
-packer build -var-file=./vars/$1.json $1-base.json
-packer build -var-file=./vars/$1.json $1-ova.json 
+packer build -var-file=./vars/$1.json $2-base.json
+packer build -var-file=./vars/$1.json $2-ova.json 

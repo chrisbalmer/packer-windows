@@ -3,7 +3,9 @@
     "ISO_PATH": null,
     "ISO_FILE": null,
     "ISO_CHECKSUM": null,
-    "NAME": "windows2019-{{ env `BUILD_DATE` }}",
+    "GUEST_OS": null,
+    "VERSION": null,
+    "NAME": "windows{{ user `VERSION` }}-{{ env `BUILD_DATE` }}",
     "BUILD_DATE": "{{ env `BUILD_DATE` }}",
     "OUTPUT_ROOT": "./output",
     "HEADLESS": "true"
@@ -12,7 +14,7 @@
     "name": "{{ user `NAME` }}",
     "vm_name": "{{ user `NAME` }}",
     "type": "vmware-iso",
-    "guest_os_type": "windows2019srv-64",
+    "guest_os_type": "{{ user `GUEST_OS` }}",
     "output_directory": "{{ user `OUTPUT_ROOT` }}/{{ user `NAME` }}/",
     "http_directory": "http",
 

@@ -1,0 +1,9 @@
+{
+    "ISO_PATH": "https://nas.balmerfamilyfarm.com:9000/public/microsoft",
+    "OUTPUT_ROOT": "./output",
+    "GUEST_OS": "windows9srv-64",
+    "VERSION": "2016",
+    "HEADLESS": "true",
+    "ISO_FILE": "SW_DVD9_WIN_SERVER_STD_CORE_2016_64BIT_ENGLISH_-4_DC_STD_MLF_X21-70526.ISO",
+    "ISO_CHECKSUM": "sha256:47919ce8b4993f531ca1fa3f85941f4a72b47ebaa4d3a321fecf83ca9d17e6b8"
+}

@@ -1,10 +1,11 @@
 {
   "variables": {
-    "NAME": "windows2019-{{ env `BUILD_DATE` }}-ova",
+    "VERSION": null,
+    "NAME": "windows{{ user `VERSION` }}-{{ env `BUILD_DATE` }}-ova",
     "OUTPUT_ROOT": "./output",
     "HEADLESS": "true",
     "BUILD_DATE": "{{ env `BUILD_DATE` }}",
-    "SOURCE_PATH": "{{ user `OUTPUT_ROOT` }}/windows2019-{{ env `BUILD_DATE` }}/windows2019-{{ env `BUILD_DATE` }}.vmx"
+    "SOURCE_PATH": "{{ user `OUTPUT_ROOT` }}/windows{{ user `VERSION` }}-{{ env `BUILD_DATE` }}/windows{{ user `VERSION` }}-{{ env `BUILD_DATE` }}.vmx"
   },
   "builders": [{
     "name": "{{ user `NAME` }}",
@@ -58,7 +59,7 @@
         {
           "type": "shell-local",
           "inline": [
-            "ovftool --diskMode=thin --name=\"windows2019-{{ user `BUILD_DATE`}}\" --annotation=\"{{ user `BUILD_DATE`}}\" \"{{ user `OUTPUT_ROOT` }}/{{ user `NAME` }}/{{ user `NAME` }}.vmx\" \"output/windows2019-{{ user `BUILD_DATE`}}.ova\"",
+            "ovftool --diskMode=thin --name=\"windows{{ user `VERSION` }}-{{ user `BUILD_DATE`}}\" --annotation=\"{{ user `BUILD_DATE`}}\" \"{{ user `OUTPUT_ROOT` }}/{{ user `NAME` }}/{{ user `NAME` }}.vmx\" \"output/windows{{ user `VERSION` }}-{{ user `BUILD_DATE`}}.ova\"",
             "rm -rf \"{{ user `OUTPUT_ROOT` }}/{{ user `NAME` }}/\""
           ]
         }
