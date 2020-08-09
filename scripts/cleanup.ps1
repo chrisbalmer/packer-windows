@@ -16,8 +16,6 @@ Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
     }
 }
 
-Optimize-Volume -DriveLetter C
-
 wget http://download.sysinternals.com/files/SDelete.zip -OutFile sdelete.zip
 [System.Reflection.Assembly]::LoadWithPartialName("System.IO.Compression.FileSystem")
 [System.IO.Compression.ZipFile]::ExtractToDirectory("sdelete.zip", ".") 
