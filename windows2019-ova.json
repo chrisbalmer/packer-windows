@@ -24,7 +24,7 @@
     "winrm_use_ssl": true,
     "winrm_insecure": true,
 
-    "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+    "shutdown_command": "C:\\Windows\\packer\\PackerShutdown.bat",
     "shutdown_timeout": "4h",
     "floppy_files": [
       "scripts/software/cloudbase-init/cloudbase-init.conf",
@@ -34,18 +34,23 @@
   "provisioners": [
     {
       "type": "powershell",
+      "script": "scripts/software/vmware.ps1"
+    },
+    {
+      "type": "powershell",
+      "script": "scripts/smb.ps1"
+    },
+    {
+      "type": "powershell",
+      "script": "scripts/rdp.ps1"
+    },
+    {
+      "type": "powershell",
       "script": "scripts/software/cloudbase-init/cloudbase-init.ps1"
+    },
+    {
+      "type": "powershell",
+      "script": "scripts/sysprep.ps1"
     }
-  ],
-  "post-processors": [
-      [
-        {
-          "type": "shell-local",
-          "inline": [
-            "ovftool --diskMode=thin --name=\"windows2019-{{ user `BUILD_DATE`}}\" --annotation=\"{{ user `BUILD_DATE`}}\" \"{{ user `OUTPUT_ROOT` }}/{{ user `NAME` }}/{{ user `NAME` }}.vmx\" \"output/windows2019-{{ user `BUILD_DATE`}}.ova\"",
-            "rm -rf \"{{ user `OUTPUT_ROOT` }}/{{ user `NAME` }}/\""
-          ]
-        }
-      ]
   ]
 }
