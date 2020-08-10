@@ -21,6 +21,9 @@
     "winrm_use_ntlm": true,
     "winrm_use_ssl": true,
     "winrm_insecure": true,
+    "vmx_data_post": {
+      "ethernet0.virtualDev": "vmxnet3"
+    },
     "shutdown_command": "C:\\Windows\\packer\\PackerShutdown.bat",
     "shutdown_timeout": "4h",
     "floppy_files": [
