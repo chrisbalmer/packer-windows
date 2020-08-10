@@ -1,7 +1,7 @@
 {
   "variables": {
     "VERSION": null,
-    "NAME": "windows{{ user `VERSION` }}-{{ env `BUILD_DATE` }}-ova",
+    "NAME": "windows{{ user `VERSION` }}-{{ env `BUILD_DATE` }}-cloud",
     "OUTPUT_ROOT": "./output",
     "HEADLESS": "true",
     "BUILD_DATE": "{{ env `BUILD_DATE` }}",
@@ -35,27 +35,14 @@
   "provisioners": [
     {
       "type": "powershell",
-      "script": "scripts/software/vmware.ps1"
-    },
-    {
-      "type": "powershell",
-      "script": "scripts/smb.ps1"
-    },
-    {
-      "type": "powershell",
-      "script": "scripts/rdp.ps1"
-    },
-    {
-      "type": "powershell",
-      "script": "scripts/software/cloudbase-init/cloudbase-init.ps1"
-    },
-    {
-      "type": "powershell",
-      "script": "scripts/cleanup.ps1"
-    },
-    {
-      "type": "powershell",
-      "script": "scripts/sysprep.ps1"
+      "scripts": [
+        "scripts/software/vmware.ps1",
+        "scripts/smb.ps1",
+        "scripts/rdp.ps1",
+        "scripts/software/cloudbase-init/cloudbase-init.ps1",
+        "scripts/cleanup.ps1",
+        "scripts/sysprep.ps1"
+      ]
     }
   ],
   "post-processors": [
