@@ -2,6 +2,8 @@
     "ISO_PATH": "https://nas.balmerfamilyfarm.com:9000/public/microsoft",
     "OUTPUT_ROOT": "./output",
     "GUEST_OS": "windows2019srv-64",
+    "EDITION": "standard",
+    "RELEASE": "1809",
     "VERSION": "2019",
     "HEADLESS": "true",
     "ISO_FILE": "SW_DVD9_WIN_SERVER_STD_CORE_2019_1809.1_64BIT_ENGLISH_DC_STD_MLF_X22-02970.ISO",

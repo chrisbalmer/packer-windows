@@ -1,8 +1,8 @@
 {
-  "NAME": "windows10ent-1803",
-  "ISO_PATH": "../ISO/",
-  "OUTPUT_ROOT": "./output/",
-  "HEADLESS": "false",
-  "ISO_FILE": "SW_DVD5_Win_Pro_Ent_Edu_N_10_1803_64BIT_English_-2_MLF_X21-79647.ISO",
-  "ISO_CHECKSUM": "5e3c375380cf322dc6f82fb5cc04fba357f275fe39212620591e14f1af2d912c"
+    "NAME": "windows10ent-1803",
+    "ISO_PATH": "../ISO/",
+    "OUTPUT_ROOT": "./output/",
+    "HEADLESS": "false",
+    "ISO_FILE": "SW_DVD5_Win_Pro_Ent_Edu_N_10_1803_64BIT_English_-2_MLF_X21-79647.ISO",
+    "ISO_CHECKSUM": "5e3c375380cf322dc6f82fb5cc04fba357f275fe39212620591e14f1af2d912c"
 }

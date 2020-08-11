@@ -1,0 +1,26 @@
+{
+    "variables": {
+        "VERSION": null,
+        "EDITION": null,
+        "RELEASE": null,
+        "STAGE": "ova",
+        "PRE_NAME": "windows{{ user `VERSION` }}-{{ user `EDITION` }}-{{ user `RELEASE` }}-{{ env `BUILD_DATE` }}",
+        "NAME": "{{ user `PRE_NAME` }}-{{ user `STAGE`}}"
+    },
+    "builders": [
+        {
+            "type": "null",
+            "communicator": "none"
+        }
+    ],
+    "post-processors": [
+        [
+            {
+                "type": "shell-local",
+                "inline": [
+                    "ovftool --diskMode=thin --name=\"{{ user `PRE_NAME` }}\" --annotation=\"{{isotime \"2006-01-02\"}}\" \"output/{{ user `PRE_NAME` }}-cloud/{{ user `PRE_NAME` }}-cloud.vmx\" \"output/{{ user `PRE_NAME` }}.ova\""
+                ]
+            }
+        ]
+    ]
+}

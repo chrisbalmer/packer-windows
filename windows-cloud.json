@@ -1,0 +1,53 @@
+{
+    "variables": {
+        "VERSION": null,
+        "EDITION": null,
+        "RELEASE": null,
+        "STAGE": "cloud",
+        "PRE_NAME": "windows{{ user `VERSION` }}-{{ user `EDITION` }}-{{ user `RELEASE` }}-{{ env `BUILD_DATE` }}",
+        "NAME": "{{ user `PRE_NAME` }}-{{ user `STAGE`}}",
+        "OUTPUT_ROOT": "./output",
+        "HEADLESS": "true",
+        "BUILD_DATE": "{{ env `BUILD_DATE` }}",
+        "SOURCE_PATH": "{{ user `OUTPUT_ROOT` }}/{{ user `PRE_NAME` }}-base/{{ user `PRE_NAME` }}-base.vmx"
+    },
+    "builders": [
+        {
+            "name": "{{ user `NAME` }}",
+            "vm_name": "{{ user `NAME` }}",
+            "type": "vmware-vmx",
+            "output_directory": "{{ user `OUTPUT_ROOT` }}/{{ user `NAME` }}/",
+            "source_path": "{{ user `SOURCE_PATH` }}",
+            "headless": "{{ user `HEADLESS`}}",
+            "communicator": "winrm",
+            "winrm_username": "administrator",
+            "winrm_password": "ansible",
+            "winrm_timeout": "12h",
+            "winrm_use_ntlm": true,
+            "winrm_use_ssl": true,
+            "winrm_insecure": true,
+            "vmx_data_post": {
+                "ethernet0.virtualDev": "vmxnet3"
+            },
+            "shutdown_command": "C:\\Windows\\packer\\PackerShutdown.bat",
+            "shutdown_timeout": "4h",
+            "floppy_files": [
+                "scripts/software/cloudbase-init/cloudbase-init.conf",
+                "scripts/software/cloudbase-init/cloudbase-init-unattend.conf"
+            ]
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "powershell",
+            "scripts": [
+                "scripts/software/vmware.ps1",
+                "scripts/smb.ps1",
+                "scripts/rdp.ps1",
+                "scripts/software/cloudbase-init/cloudbase-init.ps1",
+                "scripts/cleanup.ps1",
+                "scripts/sysprep.ps1"
+            ]
+        }
+    ]
+}

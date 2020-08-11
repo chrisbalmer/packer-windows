@@ -4,8 +4,8 @@
     "GUEST_OS": "windows9-64",
     "VERSION": "10",
     "EDITION": "pro",
-    "RELEASE": "2004",
+    "RELEASE": "1909",
     "HEADLESS": "true",
-    "ISO_FILE": "Win10_2004_English_x64.iso",
-    "ISO_CHECKSUM": "sha256:a9efd2329ed805a6a58e0e0101f9b22ad4031e80e2c663c571cd004db26d2f31"
+    "ISO_FILE": "Win10_1909_English_x64.iso",
+    "ISO_CHECKSUM": "sha256:01bf1eb643f7e50d0438f4f74fb91468d35cde2c82b07abc1390d47fc6a356be"
 }
