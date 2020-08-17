@@ -11,8 +11,12 @@ export PACKER_LOG_PATH=/tmp/windows10-$BUILD_DATE.log
 
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
-echo $BUILD_DATE
+IMAGE_NAME=$(cat vars/$1.json | jq -r .IMAGE_NAME)
+cp ./scripts/autounattend.xml ./
+sed -i '' "s/{{ IMAGE_NAME }}/$IMAGE_NAME/g" ./autounattend.xml
 
-packer build -var-file=./vars/$1.json windows-base.json
+#packer build -var-file=./vars/$1.json windows-base.json
 packer build -var-file=./vars/$1.json windows-cloud.json
 packer build -var-file=./vars/$1.json windows-ova.json
+
+rm ./autounattend.xml

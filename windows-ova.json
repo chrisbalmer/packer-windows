@@ -3,8 +3,9 @@
         "VERSION": null,
         "EDITION": null,
         "RELEASE": null,
+        "IMAGE_SUFFIX": "",
         "STAGE": "ova",
-        "PRE_NAME": "windows{{ user `VERSION` }}-{{ user `EDITION` }}-{{ user `RELEASE` }}-{{ env `BUILD_DATE` }}",
+        "PRE_NAME": "windows{{ user `VERSION` }}-{{ user `EDITION` }}-{{ user `RELEASE` }}{{ user `IMAGE_SUFFIX` }}-{{ env `BUILD_DATE` }}",
         "NAME": "{{ user `PRE_NAME` }}-{{ user `STAGE`}}"
     },
     "builders": [

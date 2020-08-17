@@ -2,6 +2,7 @@
     "NAME": "windows10ent-1709",
     "ISO_PATH": "/Volumes/Data/ISO/",
     "OUTPUT_ROOT": "/Volumes/Data/packer-windows/output/",
+    "IMAGE_NAME": "Windows 10 Enterprise",
     "HEADLESS": "false",
     "ISO_FILE": "SW_DVD5_Win_Pro_Ent_Edu_N_10_1709_64BIT_English_MLF_X21-50143.ISO",
     "ISO_CHECKSUM": "93f91010979387ec0b2417c94dff7a00e827990f8f40b3d5885774d68eb74bb9"

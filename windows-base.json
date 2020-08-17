@@ -7,8 +7,9 @@
         "VERSION": null,
         "EDITION": null,
         "RELEASE": null,
+        "IMAGE_SUFFIX": "",
         "STAGE": "base",
-        "NAME": "windows{{ user `VERSION` }}-{{ user `EDITION` }}-{{ user `RELEASE` }}-{{ env `BUILD_DATE` }}-{{ user `STAGE` }}",
+        "NAME": "windows{{ user `VERSION` }}-{{ user `EDITION` }}-{{ user `RELEASE` }}{{ user `IMAGE_SUFFIX` }}-{{ env `BUILD_DATE` }}-{{ user `STAGE` }}",
         "BUILD_DATE": "{{ env `BUILD_DATE` }}",
         "OUTPUT_ROOT": "./output",
         "HEADLESS": "true"
@@ -39,7 +40,7 @@
             "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
             "shutdown_timeout": "4h",
             "floppy_files": [
-                "scripts/{{ user `VERSION` }}-{{ user `EDITION` }}/autounattend.xml",
+                "./autounattend.xml",
                 "scripts/microsoft-updates.bat",
                 "scripts/win-updates.ps1",
                 "scripts/software/ansible.ps1"
