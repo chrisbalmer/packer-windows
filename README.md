@@ -1,11 +1,6 @@
 # Windows Packer Templates
 
-These are some templates to build Windows images for VMware ESXi/Workstation/Fusion. The `-base` templates build a simple image and then the other templates add other features onto the base image. All keys used are public KMS keys that will activate if you join a domain with a KMS server configured. Otherwise you will need to supply valid MAK keys in the `autounattend.xml` files for Windows to activate.
-
-## Tasks
-
-- [X] Fix VMware tools, it is rebooting automatically, need to avoid the reboot: This is due to case sensitivity for the arguments.
-- [X] Find out why PowerShell scripts are not finishing before the next is run: Needed to add `-NoNewWindow` to the `Start-Process` cmdlet.
+These are some templates to build Windows images for VMware ESXi/Workstation/Fusion. The `-base` templates build a simple image and then the other templates add other features onto the base image.
 
 ## WinRM
 
